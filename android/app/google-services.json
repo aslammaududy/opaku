@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1053318855882",
+    "project_id": "opaku-84104",
+    "storage_bucket": "opaku-84104.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1053318855882:android:ed8d37c99d2db62a2f8833",
+        "android_client_info": {
+          "package_name": "me.aslammaududy.opaku"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1053318855882-7ekucauvbust4sm82be9eecitjuhqfq3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "me.aslammaududy.opaku",
+            "certificate_hash": "14c5625ccf31328a6f7f92cfcf7f5874e1dd74c7"
+          }
+        },
+        {
+          "client_id": "1053318855882-f632k7uuhq352ddkasstdstve4mjf0gd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBX6h932LuuYhox82l8Qzmun0bxHJmp5PM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1053318855882-f632k7uuhq352ddkasstdstve4mjf0gd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
