@@ -51,33 +51,35 @@ class ProductList extends StatelessWidget {
             ),
           ),
           Expanded(
-              child: ListTile(
-                  title: TitleText(
-                    text: model.name ?? '',
-                    fontSize: 15,
-                    fontWeight: FontWeight.w700,
+            child: ListTile(
+              title: TitleText(
+                text: model.name ?? '',
+                fontSize: 15,
+                fontWeight: FontWeight.w700,
+              ),
+              subtitle: Row(
+                children: <Widget>[
+                  TitleText(
+                    text: '${controller.productPrice[model.id]}',
+                    color: LightColor.red,
+                    fontSize: 12,
                   ),
-                  subtitle: Row(
-                    children: <Widget>[
-                      TitleText(
-                        text: '${model.price}',
-                        color: LightColor.red,
-                        fontSize: 12,
-                      ),
-                    ],
-                  ),
-                  trailing: Container(
-                    width: 35,
-                    height: 35,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        color: LightColor.lightGrey.withAlpha(150),
-                        borderRadius: BorderRadius.circular(10)),
-                    child: TitleText(
-                      text: 'x ${controller.productCount[model.id]}',
-                      fontSize: 12,
-                    ),
-                  )))
+                ],
+              ),
+              trailing: Container(
+                width: 35,
+                height: 35,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                    color: LightColor.lightGrey.withAlpha(150),
+                    borderRadius: BorderRadius.circular(10)),
+                child: TitleText(
+                  text: 'x ${controller.productCount[model.id]}',
+                  fontSize: 12,
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );

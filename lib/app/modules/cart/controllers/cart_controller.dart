@@ -6,6 +6,9 @@ class CartController extends GetxController {
 
   final cartList = <Product>[].obs;
   final productCount = <int, int>{}.obs;
+  final productPrice = <int, double>{}.obs;
+
+  var total = 0.0.obs;
 
   @override
   void onInit() {
@@ -24,16 +27,32 @@ class CartController extends GetxController {
     cartList.add(product);
 
     _countProduct(product);
+
+    Get.snackbar("Success!", "Success add item to cart");
   }
 
   void _countProduct(Product product) {
-    print(product.id);
+    productCount[product.id!] =
+        cartList.where((p) => p.id == product.id).length;
+
+    _getPrice(product);
+  }
+
+  void _getPrice(Product product) {
     cartList.forEach((element) {
-      if (!productCount.containsKey(element.id)) {
-        productCount[element.id ?? 0] = 1;
-      } else {
-        productCount[element.id ?? 0] = productCount[element.id ?? 0]! + 1;
-      }
+      productPrice[product.id!] = (element.id == product.id
+          ? product.price! * productCount[product.id]!
+          : 0.0);
+    });
+
+    _getTotal();
+  }
+
+  void _getTotal() {
+    total.value = productPrice.values.fold(0.0, (previousValue, element) {
+      print(previousValue);
+      print(element);
+      return previousValue + element;
     });
   }
 }
