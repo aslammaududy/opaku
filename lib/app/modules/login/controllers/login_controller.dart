@@ -12,6 +12,9 @@ class LoginController extends GetxController {
   var errorEmail = "".obs;
   var errorPassword = "".obs;
 
+  late UserCredential userCredential;
+
+
   @override
   void onInit() {
     super.onInit();
@@ -25,9 +28,9 @@ class LoginController extends GetxController {
         print('User is currently signed out!');
       } else {
         print('User is signed in!');
-        if (Get.currentRoute != '/home') {
+        // if (Get.currentRoute != '/home') {
           Get.offAndToNamed(Routes.HOME);
-        }
+        // }
       }
     });
   }
@@ -43,9 +46,12 @@ class LoginController extends GetxController {
       title: "Please Wait",
     );
 
+
+
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
+      userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: emailController.text, password: passwordController.text);
+
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         errorEmail.value = 'No user found for that email.';
@@ -53,9 +59,11 @@ class LoginController extends GetxController {
         errorPassword.value = 'Wrong password provided for that user.';
       }
     }
-
     Get.back();
-    Get.offAndToNamed(Routes.HOME);
+
+    if(userCredential.user != null) {
+      Get.offAndToNamed(Routes.HOME);
+    }
   }
 
   void logout() async {
