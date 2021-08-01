@@ -8,16 +8,13 @@ class Product {
 
   double? price;
 
-  bool isliked;
-
   bool isSelected;
 
   Product(
-      { this.id,
-       this.name,
-       this.category,
-       this.price,
-       this.isliked = false,
+      {this.id,
+      this.name,
+      this.category,
+      this.price,
       this.isSelected = false,
       this.image});
 }

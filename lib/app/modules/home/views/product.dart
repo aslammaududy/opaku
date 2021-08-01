@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:opaku/app/data/app_data.dart';
+import 'package:opaku/app/modules/detail/controllers/detail_controller.dart';
 import 'package:opaku/app/routes/app_pages.dart';
 import 'package:opaku/app/themes/light_color.dart';
 import 'package:opaku/app/themes/theme.dart';
@@ -25,8 +26,7 @@ class Product extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         children: AppData.productList
             .map<Widget>((product) => InkWell(
-                  onTap: () => Get.toNamed(Routes.DETAIL,
-                      arguments: product),
+                  onTap: () => Get.toNamed(Routes.DETAIL, arguments: product),
                   child: Container(
                       decoration: BoxDecoration(
                         color: LightColor.background,
@@ -46,21 +46,6 @@ class Product extends StatelessWidget {
                         child: Stack(
                           alignment: Alignment.center,
                           children: <Widget>[
-                            Positioned(
-                              left: 0,
-                              top: 0,
-                              child: IconButton(
-                                icon: Icon(
-                                  product.isliked
-                                      ? Icons.favorite
-                                      : Icons.favorite_border,
-                                  color: product.isliked
-                                      ? LightColor.red
-                                      : LightColor.iconColor,
-                                ),
-                                onPressed: () {},
-                              ),
-                            ),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -37,13 +37,22 @@ class DetailView extends GetView<DetailController> {
                   text: '${product.price}',
                   fontSize: 15,
                 ),
-                IconButton(
-                  icon: Icon(
-                    product.isliked ? Icons.favorite : Icons.favorite_border,
-                    color:
-                        product.isliked ? LightColor.red : LightColor.iconColor,
+                Obx(
+                  () => IconButton(
+                    icon: Icon(
+                      controller.favorites.contains(product)
+                          ? Icons.favorite
+                          : Icons.favorite_border,
+                      color: controller.favorites.contains(product)
+                          ? LightColor.red
+                          : LightColor.iconColor,
+                    ),
+                    onPressed: () {
+                      controller.favorites.contains(product)
+                          ? controller.removeFavorite(product)
+                          : controller.addToFavorite(product);
+                    },
                   ),
-                  onPressed: () {},
                 ),
               ],
             ),
