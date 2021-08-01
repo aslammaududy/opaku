@@ -29,6 +29,8 @@ class CartController extends GetxController {
     _countProduct(product);
 
     Get.snackbar("Success!", "Success add item to cart");
+
+
   }
 
   void _countProduct(Product product) {
