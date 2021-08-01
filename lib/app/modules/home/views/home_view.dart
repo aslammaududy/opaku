@@ -32,7 +32,7 @@ class HomeView extends GetView<HomeController> {
             SizedBox(
               height: 30,
             ),
-            InkWell(child: Product()),
+            Product(),
           ],
         ),
       ),

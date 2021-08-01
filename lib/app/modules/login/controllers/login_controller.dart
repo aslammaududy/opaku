@@ -25,7 +25,9 @@ class LoginController extends GetxController {
         print('User is currently signed out!');
       } else {
         print('User is signed in!');
-        Get.offAndToNamed(Routes.HOME);
+        if (Get.currentRoute != '/home') {
+          Get.offAndToNamed(Routes.HOME);
+        }
       }
     });
   }
@@ -54,5 +56,10 @@ class LoginController extends GetxController {
 
     Get.back();
     Get.offAndToNamed(Routes.HOME);
+  }
+
+  void logout() async {
+    await FirebaseAuth.instance.signOut();
+    Get.offAndToNamed(Routes.LOGIN);
   }
 }
