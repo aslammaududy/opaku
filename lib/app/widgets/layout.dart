@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:opaku/app/routes/app_pages.dart';
 import 'package:opaku/app/themes/theme.dart';
-import 'package:opaku/app/widgets/app_icon.dart';
-import 'package:opaku/app/widgets/cart.dart';
 import 'package:opaku/app/widgets/top_menu_bar.dart';
 
 class Layout extends StatelessWidget {

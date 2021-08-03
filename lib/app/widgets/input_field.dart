@@ -9,13 +9,16 @@ class InputField extends StatelessWidget {
       required this.hintText,
       required this.controller,
       this.obsecureText = false,
-      this.errorText = ""})
+      this.errorText = "",
+      this.minLines = 1,
+      this.maxLines = 1})
       : super(key: key);
   final IconData icon;
   final String hintText;
   final String errorText;
   final TextEditingController controller;
   final obsecureText;
+  final int minLines, maxLines;
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +33,8 @@ class InputField extends StatelessWidget {
           child: TextFormField(
             controller: controller,
             obscureText: obsecureText,
+            minLines: minLines,
+            maxLines: maxLines,
             decoration: InputDecoration(
                 border: InputBorder.none,
                 hintText: hintText,

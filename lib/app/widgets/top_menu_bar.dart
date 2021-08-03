@@ -6,12 +6,11 @@ import 'package:opaku/app/widgets/app_icon.dart';
 import 'package:opaku/app/widgets/cart.dart';
 
 class TopMenuBar extends StatelessWidget {
-  const TopMenuBar({Key? key}) : super(key: key);
+  TopMenuBar({Key? key}) : super(key: key);
+  final LoginController controller = Get.find<LoginController>();
 
   @override
   Widget build(BuildContext context) {
-    LoginController controller = Get.put(LoginController());
-
     return Get.currentRoute == '/signup' ||
             Get.currentRoute == '/login' ||
             Get.currentRoute == '/cart'

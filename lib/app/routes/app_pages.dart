@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import 'package:opaku/app/modules/cart/bindings/cart_binding.dart';
 import 'package:opaku/app/modules/cart/views/cart_view.dart';
+import 'package:opaku/app/modules/chekout/bindings/chekout_binding.dart';
+import 'package:opaku/app/modules/chekout/views/chekout_view.dart';
 import 'package:opaku/app/modules/detail/bindings/detail_binding.dart';
 import 'package:opaku/app/modules/detail/views/detail_view.dart';
 import 'package:opaku/app/modules/home/bindings/home_binding.dart';
@@ -43,6 +45,11 @@ class AppPages {
       name: _Paths.CART,
       page: () => CartView(),
       binding: CartBinding(),
+    ),
+    GetPage(
+      name: _Paths.CHEKOUT,
+      page: () => ChekoutView(),
+      binding: ChekoutBinding(),
     ),
   ];
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:opaku/app/modules/cart/views/product_list.dart';
+import 'package:opaku/app/routes/app_pages.dart';
 import 'package:opaku/app/themes/light_color.dart';
 import 'package:opaku/app/widgets/button.dart';
 import 'package:opaku/app/widgets/layout.dart';
@@ -55,7 +56,11 @@ class CartView extends GetView<CartController> {
             SizedBox(
               height: 50,
             ),
-            Button(text: "Pay", onPressed: () {}),
+            Button(
+              text: "Checkout",
+              onPressed: () => Get.toNamed(Routes.CHEKOUT,
+                  arguments: controller.total.value),
+            ),
           ],
         ).marginSymmetric(horizontal: 20),
       ),

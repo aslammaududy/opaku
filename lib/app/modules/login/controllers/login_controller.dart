@@ -28,9 +28,9 @@ class LoginController extends GetxController {
         print('User is currently signed out!');
       } else {
         print('User is signed in!');
-        // if (Get.currentRoute != '/home') {
+        if (Get.currentRoute != '/home') {
           Get.offAndToNamed(Routes.HOME);
-        // }
+        }
       }
     });
   }
