@@ -1,7 +1,9 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:opaku/app/data/app_data.dart';
 import 'package:opaku/app/data/payment.dart';
+import 'package:opaku/app/data/shipping.dart';
 import 'package:opaku/app/modules/chekout/views/pay_confirm_dialog.dart';
 import 'package:opaku/app/modules/chekout/views/payments.dart';
 import 'package:opaku/app/modules/chekout/views/shippings.dart';
@@ -15,9 +17,12 @@ import '../controllers/chekout_controller.dart';
 class ChekoutView extends GetView<ChekoutController> {
   @override
   Widget build(BuildContext context) {
+    var analytics = Get.find<FirebaseAnalytics>();
+
     var paymentId = 0.obs;
     var shippingId = 0.obs;
     late Payment paymentToUse;
+    late Shipping shippingToUse;
     var amount = Get.arguments;
 
     return Scaffold(
@@ -69,7 +74,10 @@ class ChekoutView extends GetView<ChekoutController> {
             for (var shipping in AppData.shippingList)
               ObxValue(
                   (id) => InkWell(
-                        onTap: () => shippingId.value = shipping.id!,
+                        onTap: () {
+                          shippingToUse = shipping;
+                          shippingId.value = shipping.id!;
+                        },
                         child: Shippings(
                           shipping: shipping,
                           selectedShipping: shippingId == shipping.id
@@ -86,11 +94,20 @@ class ChekoutView extends GetView<ChekoutController> {
             ),
             Button(
               text: "Pay",
-              onPressed: () => Get.defaultDialog(
-                title: "",
-                content: PaymentConfirmationDialog(
-                    payment: paymentToUse, amount: amount),
-              ),
+              onPressed: () {
+                analytics.logEvent(name: "selected_payment", parameters: {
+                  "bank_name": paymentToUse.name,
+                });
+
+                analytics.logEvent(
+                    name: "selected_shipping",
+                    parameters: {"shipping_name": shippingToUse.name});
+                Get.defaultDialog(
+                  title: "",
+                  content: PaymentConfirmationDialog(
+                      payment: paymentToUse, amount: amount),
+                );
+              },
             ),
           ],
         ).marginSymmetric(horizontal: 20),

@@ -60,7 +60,7 @@ class Product extends StatelessWidget {
                                         backgroundColor:
                                             LightColor.orange.withAlpha(40),
                                       ),
-                                      Image.asset(product.image ?? '')
+                                      Image.asset(product.image ?? '',height: 120, width: 120,)
                                     ],
                                   ),
                                 ),
@@ -68,11 +68,6 @@ class Product extends StatelessWidget {
                                 TitleText(
                                   text: product.name ?? '',
                                   fontSize: product.isSelected ? 16 : 14,
-                                ),
-                                TitleText(
-                                  text: product.category ?? '',
-                                  fontSize: product.isSelected ? 14 : 12,
-                                  color: LightColor.orange,
                                 ),
                                 TitleText(
                                   text: product.price.toString(),

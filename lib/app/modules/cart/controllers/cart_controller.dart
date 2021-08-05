@@ -1,9 +1,11 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:get/get.dart';
 import 'package:opaku/app/data/product.dart';
 
 class CartController extends GetxController {
   //TODO: Implement CartController
 
+  final analytics = Get.find<FirebaseAnalytics>();
   final cartList = <Product>[].obs;
   final productCount = <int, int>{}.obs;
   final productPrice = <int, double>{}.obs;
@@ -29,8 +31,6 @@ class CartController extends GetxController {
     _countProduct(product);
 
     Get.snackbar("Success!", "Success add item to cart");
-
-
   }
 
   void _countProduct(Product product) {
@@ -38,6 +38,12 @@ class CartController extends GetxController {
         cartList.where((p) => p.id == product.id).length;
 
     _getPrice(product);
+
+    analytics.logAddToCart(
+        itemId: "${product.id}",
+        itemName: product.name!,
+        itemCategory: "",
+        quantity: productCount[product.id]!);
   }
 
   void _getPrice(Product product) {

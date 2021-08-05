@@ -2,7 +2,6 @@ class Product {
   int? id;
   String? name;
 
-  String? category;
 
   String? image;
 
@@ -13,7 +12,6 @@ class Product {
   Product(
       {this.id,
       this.name,
-      this.category,
       this.price,
       this.isSelected = false,
       this.image});
